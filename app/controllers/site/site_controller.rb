@@ -1,7 +1,8 @@
 class Site::SiteController < ApplicationController
     def index
         @posts = Post.all 
-        # :erb "site.index"       
+        # :erb "site.index"    
+        render    
     end
 
     def post 
