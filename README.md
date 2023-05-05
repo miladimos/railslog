@@ -11,6 +11,7 @@ full featured blogging system written in ruby on rails 7
 * realtime notifications
 * rest full api 
 * sitemap, feed rss
+* add Scheduled posts
 
 
 * admin panel

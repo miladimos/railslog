@@ -1,8 +1,8 @@
 class Site::SiteController < ApplicationController
     def index
-        @posts = Post.all 
-        # :erb "site.index"    
-        render    
+        @posts = Post.published 
+        
+        @pagy, @posts = pagy(@posts)
     end
 
     def post 
