@@ -1,0 +1,2 @@
+class WebmasterController < ApplicationController
+end
