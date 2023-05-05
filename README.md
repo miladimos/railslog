@@ -10,5 +10,7 @@ full featured blogging system written in ruby on rails 7
 * Users: follow / un follow, 
 * realtime notifications
 * rest full api 
+* sitemap, feed rss
+
 
 * admin panel
