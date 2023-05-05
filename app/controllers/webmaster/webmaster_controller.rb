@@ -1,2 +1,2 @@
-class WebmasterController < ApplicationController
+class Webmaster::WebmasterController < ApplicationController
 end
