@@ -1,3 +1,4 @@
-class Site::Auth::PasswordController > ApplicationController
-
+class Site::Auth::PasswordController < ApplicationController
+  def forgot_form
+  end
 end
