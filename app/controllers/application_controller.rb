@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+    # include Authentication
+    include Pagy::Backend
+    
     before_action :set_current_user
 
     def set_current_user

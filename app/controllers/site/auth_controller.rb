@@ -1,4 +1,4 @@
-class Site::AuthController > ApplicationController
+class Site::AuthController < ApplicationController
     def register_form
         @user = User.new
     end
@@ -9,7 +9,7 @@ class Site::AuthController > ApplicationController
             session[:user_id] = @user.id
             redirect_to index_path
         else
-            render: :register_form
+            render :register_form
         end
     end
 

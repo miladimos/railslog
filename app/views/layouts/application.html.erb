@@ -14,8 +14,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Railslog - </title>
     <!-- CSS files -->
-    <link href="./dist/css/tabler.min.css?1674944402" rel="stylesheet"/>
-    <link href="./dist/css/demo.min.css?1674944402" rel="stylesheet"/>
+
+    <%= stylesheet_link_tag "tabler.min", "demo.min" %>
+
     <style>
       @import url('https://rsms.me/inter/inter.css');
       :root {
@@ -36,7 +37,7 @@
   
     <%= yield %>
 
-    <script src="./dist/js/demo-theme.min.js?1674944402"></script>
+    <%= javascript_include_tag "demo-theme.min" %>
 
     <div class="page">
 
@@ -374,7 +375,8 @@
           </div>
         </div>
         
-        <%= render partials: "shared/page_footer" %>
+        <%= render partial: "shared/page_footer" %>
+
       </div>
     </div>
 
@@ -480,10 +482,8 @@
         </div>
       </div>
     </div>
-
-    <!-- Tabler Core -->
-    <script src="./dist/js/tabler.min.js?1674944402" defer></script>
-    <script src="./dist/js/demo.min.js?1674944402" defer></script>
   
+    <%= javascript_include_tag "tabler.min", "demo.min" %>
+
   </body>
 </html>

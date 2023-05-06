@@ -1,5 +1,7 @@
 class User < ApplicationRecord
     has_secure_password
+    # has_one_attached :avatar
+
 
     before_save :downcase_email
 
