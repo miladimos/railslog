@@ -1,3 +1,3 @@
 class Tag < ApplicationRecord
-    validates :name, presents: true, length: { minimum: 3 }
+  validates :name, presence: true, length: { minimum: 3 }
 end

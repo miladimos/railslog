@@ -1,21 +1,21 @@
 class User < ApplicationRecord
-    has_secure_password
-    # has_one_attached :avatar
+  has_secure_password
+  # has_one_attached :avatar
+  has_many :posts, dependent: :destroy
 
+  before_save :downcase_email
 
-    before_save :downcase_email
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, presence: true, uniqueness: true
 
-    validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}, presence: true, uniqueness: true
+  def confirm!
+    update_columns(confirmed_at: Time.current)
+  end
 
-    def confirm!
-        update_columns(confirmed_at: Time.current)
-    end
-
-    def confirmed?
+  def confirmed?
     confirmed_at.present?
-    end
-    
-    private def downcase_email
-        self.email = email.downcase
-    end
+  end
+
+  private def downcase_email
+    self.email = email.downcase
+  end
 end
