@@ -12,7 +12,8 @@ class Site::PostsController < ApplicationController
   end
 
   def post
-    @post = Post.where(params[:id])
+    @post = Post.friendly.find(params[:id])
+    impressionist(@post) #  @post.impressionist_count
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path
   end

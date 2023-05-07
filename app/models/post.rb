@@ -1,5 +1,8 @@
 class Post < ApplicationRecord
-  # has_one_attached :thumbnail
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+  is_impressionable :counter_cache => true
+  has_one_attached :thumbnail
   has_rich_text :content
 
   belongs_to :user

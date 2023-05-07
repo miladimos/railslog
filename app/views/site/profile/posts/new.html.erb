@@ -1,7 +1,7 @@
 <div class="col-lg-8 mx-auto">
   <div class="row row-cards">
     <div class="col-12">
-      <form class="card">
+      <%= form_with model: @post, class: "card" do |form| %>
         <div class="card-header">
           <h3>New Post</h3>
         </div>
@@ -9,13 +9,13 @@
           <div class="row row-cards">
             <div class="col-md-12">
               <div class="mb-3">
-                <label class="form-label"></label>
-                <input type="text" class="form-control" placeholder="Title">
+                <%= form.label :title, "Title", class: "form-label" %>
+                <%= form.text_field :title, class: "form-control", placeholder: "Title" %>
               </div>
             </div>
             <div class="col-md-5">
               <div class="mb-3">
-                <label class="form-label">Category</label>
+                <%= form.label :category , "Category", class: "form-label" %>
                 <select class="form-control form-select">
                   <option value="">Germany</option>
                 </select>
@@ -23,8 +23,8 @@
             </div>
             <div class="col-md-12">
               <div class="mb-3 mb-0">
-                <label class="form-label">Body</label>
-                <textarea rows="5" class="form-control" placeholder="Writing ..."></textarea>
+                <%= form.label :content, "Body", class: "form-label" %>
+                <%= form.rich_text_area  :content, class: "form-control", placeholder:"Writing ..." %>
               </div>
             </div>
             <div class="col-md-3">
@@ -40,9 +40,9 @@
           </div>
         </div>
         <div class="card-footer text-center">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <%= form.submit "Submit", class: "btn btn-primary" %>
         </div>
-      </form>
+      <% end %>
     </div>
   </div>
 </div>
