@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :username, null: false
       t.string :email, null: false
       t.string :password_digest
-      t.timestamp :email_confirmed_at
+      t.timestamp :email_confirmed_at, null: true
       t.timestamps
     end
 

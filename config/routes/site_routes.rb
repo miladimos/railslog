@@ -20,6 +20,9 @@ module SiteRoutes
 
           get "auth/password/forgot", to: "password#forgot_form", as: :password_forgot_form
           post "auth/password/forgot", to: "auth#password_forgot", as: :password_forgot
+
+          get "auth/password/reset/:token", to: "password#reset_form", as: :password_reset_form
+          post "auth/password/reset", to: "password#reset", as: :password_reset
         end
 
         get "@:username", to: "profile/profile#profile", as: :user_profile
