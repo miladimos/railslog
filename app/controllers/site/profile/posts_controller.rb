@@ -1,4 +1,5 @@
 class Site::Profile::PostsController < ApplicationController
+  before_action :redirect_if_not_authenticated, only: [:new]
   before_action :set_post, only: [:edit, :update, :destroy]
 
   def new

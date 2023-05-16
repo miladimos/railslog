@@ -1,19 +1,26 @@
 class Site::Auth::LoginController < ApplicationController
+  before_action :redirect_if_authenticated, only: [:login_form]
+
   def login_form
+    @user = User.new
     render "site/auth/login_form"
   end
 
   def login
-    user = User.find_by(email: params[:email])
-    if user.present? && user.authenticate(params[:password])
-      session[:user_id] = user.id
+    @user = User.find_by(email: params[:user][:email].downcase)
+    if @user.present? && @user.authenticate(params[:user][:password])
+      login @user
+      remember(@user) if params[:user][:remember_me] == "1"
+
       redirect_to site_path
     else
-      "Invalid password or email"
+      puts "Invalid password or email--------------------------------------------"
     end
   end
 
   def logout
-    session[:user_id] = nil
+    forget(current_user)
+    logout
+    redirect_to root_path
   end
 end

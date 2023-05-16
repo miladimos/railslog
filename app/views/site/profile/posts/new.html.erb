@@ -22,20 +22,16 @@
               </div>
             </div>
             <div class="col-md-12">
-              <div class="mb-3 mb-0">
+              <div class="mb-3">
                 <%= form.label :content, "Body", class: "form-label" %>
                 <%= form.rich_text_area  :content, class: "form-control", placeholder:"Writing ..." %>
               </div>
             </div>
-            <div class="col-md-3">
-              <label class="row">
-                <span class="col">Post is Draft?</span>
-                <span class="col-auto">
-                  <label class="form-check form-check-single form-switch">
-                    <input class="form-check-input" type="checkbox" checked>
-                  </label>
-                </span>
-              </label>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <%= form.label :thumbnail, "Thumbnail", class: "form-label" %>
+                <%= form.file_field :thumbnail, class: "form-control" %>
+              </div>
             </div>
           </div>
         </div>

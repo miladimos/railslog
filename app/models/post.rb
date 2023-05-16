@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   has_one_attached :thumbnail
   has_rich_text :content
 
+  # Author
   belongs_to :user
   has_many :comments, dependent: :destroy
 

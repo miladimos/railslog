@@ -26,7 +26,8 @@ module SiteRoutes
         end
 
         get "@:username", to: "profile/profile#profile", as: :user_profile
-        get "profile/posts/new", to: "profile/posts#new"
+        # get "setting", to: "profile/posts#new"
+        get "profile/posts/new", to: "profile/posts#new", as: :post_new
       end
 
       # resource "profile/posts", to: "site/profile/posts", as: :profile_posts

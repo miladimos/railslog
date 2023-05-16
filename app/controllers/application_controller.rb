@@ -1,16 +1,10 @@
 class ApplicationController < ActionController::Base
-  # include Authentication
   include Pagy::Backend
+  include Authentication
+  before_action :update_last_seen_at, if: -> { user_logged_in? && (current_user.last_seen_at.nil? || current_user.last_seen_at < 5.minutes.ago) }
 
-  before_action :set_current_user
-
-  def set_current_user
-    if session[:user_id]
-      Current.user User.find_by(id: session[:user_id])
-    end
-  end
-
-  def require_user_logged_in!
-    redirect_to login_page_form_path, alert: "" if Current.user.nil?
+  def update_last_seen_at
+    # logger.info "Update last seen at timestamp for user id #{current_user.id}"
+    current_user.update_attribute(:last_seen_at, Time.current)
   end
 end
