@@ -1,6 +1,7 @@
 class Api::V1::ApiController < Api::ApiBaseController
   def tags
     tags = Tag.all
+    json_response(@tags)
   end
 
   def categories

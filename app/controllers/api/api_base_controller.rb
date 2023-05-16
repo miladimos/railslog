@@ -1,4 +1,5 @@
 class Api::ApiBaseController < ApplicationController
+  include Responser
   rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
 
   def handle_not_found

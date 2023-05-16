@@ -3,7 +3,7 @@ class User < ApplicationRecord
   PASSWORD_RESET_TOKEN_EXPIRATION = 10.minutes
   has_secure_token :remember_token
   after_create :assign_default_role
-  # acts_as_voter
+  acts_as_voter
 
   has_secure_password
   # has_one_attached :avatar
@@ -13,7 +13,7 @@ class User < ApplicationRecord
   before_save :downcase_email
 
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, presence: true, uniqueness: true
-  validates :must_have_a_role, on: :update
+  # validates :must_have_a_role, on: :update
 
   def confirm_email!
     update_columns(email_confirmed_at: Time.current)

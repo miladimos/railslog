@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   is_impressionable :counter_cache => true
   has_one_attached :thumbnail
   has_rich_text :content
-  # acts_as_votable
+  acts_as_votable
 
   # Author
   belongs_to :user
