@@ -16,9 +16,7 @@
             <div class="col-md-5">
               <div class="mb-3">
                 <%= form.label :category , "Category", class: "form-label" %>
-                <select class="form-control form-select">
-                  <option value="">Germany</option>
-                </select>
+                <%= form.select :category, @categories.map { |t| [t.name, t.id]}, {}, class: "form-control form-select" %>
               </div>
             </div>
             <div class="col-md-12">

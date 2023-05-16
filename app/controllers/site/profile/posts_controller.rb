@@ -4,12 +4,20 @@ class Site::Profile::PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @categories = Category.all
   end
 
   def create
+    @post = Post.new(post_params)
+    if @post.save
+    else
+    end
   end
 
   def edit
+  end
+
+  def show
   end
 
   def update
@@ -29,6 +37,16 @@ class Site::Profile::PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :category, :draft, :thubmnail)
+    params.require(:post).permit(:title, :content, :category, :thubmnail)
+  end
+
+  def export_csv
+    @posts = current_user.posts.all
+    respond_to do |format|
+      format.html
+      format.csv do
+        send_data Post.to_csv(@posts), filename: Data.today.to_s, content_type: "text/csv"
+      end
+    end
   end
 end

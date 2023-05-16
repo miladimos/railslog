@@ -5,6 +5,7 @@
     </div>
     <%= form_with model: @user, class: "card card-md", url: register_form_path do |form| %>
       <%= render partial: "shared/errors", locals: { object: form.object } %>
+      <%= invisible_captcha %>
       <div class="card-body">
         <h2 class="card-title text-center mb-4">Create new account</h2>
         <div class="mb-3">

@@ -66,6 +66,7 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    acts_as_votable (0.14.0)
     addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
     bcrypt (3.1.18)
@@ -104,6 +105,8 @@ GEM
       railties (>= 6.0.0)
     impressionist (2.0.0)
       nokogiri (~> 1)
+    invisible_captcha (2.1.0)
+      rails (>= 5.2)
     io-console (0.6.0)
     irb (1.6.4)
       reline (>= 0.3.0)
@@ -141,6 +144,8 @@ GEM
     public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
+    pundit (2.3.0)
+      activesupport (>= 3.0.0)
     racc (1.6.2)
     rack (2.2.7)
     rack-test (2.1.0)
@@ -181,6 +186,7 @@ GEM
     reline (0.3.3)
       io-console (~> 0.5)
     rexml (3.2.5)
+    rolify (6.0.1)
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     rubyzip (2.3.2)
@@ -233,6 +239,7 @@ PLATFORMS
   x64-mingw-ucrt
 
 DEPENDENCIES
+  acts_as_votable
   bcrypt (~> 3.1.7)
   bootsnap
   capybara
@@ -241,12 +248,15 @@ DEPENDENCIES
   image_processing (~> 1.2)
   importmap-rails
   impressionist
+  invisible_captcha
   jbuilder
   pagy (~> 6.0)
   puma (~> 5.0)
+  pundit
   rails (~> 7.0.4, >= 7.0.4.3)
   ransack
   redis (~> 4.0)
+  rolify
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.4)

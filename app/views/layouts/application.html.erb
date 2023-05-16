@@ -110,7 +110,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                   <%= link_to "Profile", user_profile_path(current_user.username), class: "dropdown-item" %>
-                  <%= link_to "New Post", post_new_path , class: "dropdown-item" %>
+                  <%= link_to "New Post", posts_new_path , class: "dropdown-item" %>
                   <div class="dropdown-divider"></div>
                   <a href="./settings.html" class="dropdown-item">Settings</a>
                   <%= link_to 'Logout', login_path, method: :delete, class: "dropdown-item" %>
@@ -227,6 +227,7 @@
         <!-- Page body -->
         <div class="page-body">
           <div class="container-xl">
+            <%= flash[:error] %>
             <%= yield %>
           </div>
         </div>

@@ -1,5 +1,6 @@
 class Site::Auth::RegisterController < ApplicationController
   before_action :redirect_if_authenticated, only: [:register_form]
+  invisible_captcha only: [:register]
 
   def register_form
     @user = User.new

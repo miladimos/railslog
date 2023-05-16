@@ -5,7 +5,7 @@ module SiteRoutes
 
       scope module: "site" do
         get "posts", to: "posts#posts", as: :posts
-        get "posts/:id", to: "posts#post", as: :post_show
+        get "posts/:id", to: "posts#post", as: :posts_show
 
         get "categories", to: "site#categories", as: :categories
 
@@ -27,10 +27,9 @@ module SiteRoutes
 
         get "@:username", to: "profile/profile#profile", as: :user_profile
         # get "setting", to: "profile/posts#new"
-        get "profile/posts/new", to: "profile/posts#new", as: :post_new
+        get "profile/posts/new", to: "profile/posts#new", as: :posts_new
+        post "profile/posts/new", to: "profile/posts#create", as: :posts_create
       end
-
-      # resource "profile/posts", to: "site/profile/posts", as: :profile_posts
     end
   end
 end

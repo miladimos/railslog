@@ -58,6 +58,14 @@ gem "friendly_id", "~> 5.1.0"
 
 gem "ransack"
 
+gem "invisible_captcha"
+
+gem "rolify"
+
+gem "pundit"
+
+gem "acts_as_votable"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

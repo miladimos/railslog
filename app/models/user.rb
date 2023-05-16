@@ -2,6 +2,8 @@ class User < ApplicationRecord
   CONFIRMATION_TOKEN_EXPIRATION = 10.minutes
   PASSWORD_RESET_TOKEN_EXPIRATION = 10.minutes
   has_secure_token :remember_token
+  after_create :assign_default_role
+  # acts_as_voter
 
   has_secure_password
   # has_one_attached :avatar
@@ -11,6 +13,7 @@ class User < ApplicationRecord
   before_save :downcase_email
 
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, presence: true, uniqueness: true
+  validates :must_have_a_role, on: :update
 
   def confirm_email!
     update_columns(email_confirmed_at: Time.current)
@@ -43,5 +46,23 @@ class User < ApplicationRecord
   end
 
   def isOnline
+  end
+
+  def assign_default_role
+    self.add_role(:author) if self.roles.blank?
+  end
+
+  def is_admin?
+    self.has_role? :admin
+  end
+
+  def is_author?
+    self.has_role? :author
+  end
+
+  def must_have_a_role
+    unless roles.any?
+      errors.add(:roles, "must have at least 1 roles")
+    end
   end
 end
