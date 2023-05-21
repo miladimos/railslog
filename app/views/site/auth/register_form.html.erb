@@ -10,18 +10,18 @@
         <h2 class="card-title text-center mb-4">Create new account</h2>
         <div class="mb-3">
           <%= form.label :username , class: "form-label" %>
-          <%= form.text_field :username, class: "form-control", placeholder: "username" %>
+          <%= form.text_field :username, class: "form-control", placeholder: "username", required: true %>
         </div>
         <div class="mb-3">
           <%= form.label :email, class: "form-label" %>
-          <%= form.email_field :email, class: "form-control" %>
+          <%= form.email_field :email, class: "form-control", placeholder: "email", required: true %>
         </div>
         <div class="mb-3">
           <%= form.label :password, class: "form-label" %>
-          <%= form.password_field :password, class: "form-control"%>
+          <%= form.password_field :password, class: "form-control", placeholder: "password", required: true %>
         </div>
         <div class="mb-3">
-          <span>I Agree the <a href="./terms-of-service.html" tabindex="-1">terms and policy</a>.</span>
+          <span>I Agree the <a href="#" tabindex="-1">terms and policy</a>.</span>
         </div>
         <div class="form-footer">
           <%= form.submit "Register", class: "btn btn-primary w-100"%>

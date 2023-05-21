@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  app:  
+    build: ./docker  
+    container_name: "railsblog_container"
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    container_name: railsblog_db
+    environment:
+      POSTGRES_DB: railsblog_db
+      POSTGRES_PASSWORD: password
+    networks:
+      - db-network
+    volumes:
+      - db-volume:/var/lib/postgresql/data
+
+  redis:
+    image: redis
+    container_name: railsblog_redis
+    ports:
+      - "6379:6379"
+
+volumes:
+  applogvolume: {}
+  db-volume: {}
+
+networks:
+  app-network:
+  db-network:
+
+

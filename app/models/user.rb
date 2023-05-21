@@ -2,7 +2,7 @@ class User < ApplicationRecord
   CONFIRMATION_TOKEN_EXPIRATION = 10.minutes
   PASSWORD_RESET_TOKEN_EXPIRATION = 10.minutes
   has_secure_token :remember_token
-  after_create :assign_default_role
+  # after_create :assign_default_role
   acts_as_voter
 
   has_secure_password
@@ -12,7 +12,9 @@ class User < ApplicationRecord
 
   before_save :downcase_email
 
+  validates :username, presence: true, uniqueness: true, length: { minimum: 3 }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, presence: true, uniqueness: true
+  validates :password, presence: true
   # validates :must_have_a_role, on: :update
 
   def confirm_email!

@@ -14,4 +14,11 @@ class Site::SiteController < ApplicationController
     @categories = Category.all
     render "site/categories"
   end
+
+  def categoriesShow
+    @category = Category.find(params[:id])
+
+    @posts = Post.where().all
+    render "site/categories_show"
+  end
 end

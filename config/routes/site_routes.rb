@@ -8,6 +8,7 @@ module SiteRoutes
         get "posts/:id", to: "posts#post", as: :posts_show
 
         get "categories", to: "site#categories", as: :categories
+        get "categories/:id", to: "site#categoriesShow", as: :categories_show
 
         scope module: "auth" do
           get "auth/register", to: "register#register_form", as: :register_form
@@ -16,7 +17,7 @@ module SiteRoutes
           get "auth/login", to: "login#login_form", as: :login_form
           post "auth/login", to: "login#login", as: :login
 
-          post "auth/logout", to: "login#logout", as: :logout
+          get "auth/logout", to: "login#logout", as: :logout
 
           get "auth/password/forgot", to: "password#forgot_form", as: :password_forgot_form
           post "auth/password/forgot", to: "auth#password_forgot", as: :password_forgot
@@ -24,6 +25,7 @@ module SiteRoutes
           get "auth/password/reset/:token", to: "password#reset_form", as: :password_reset_form
           post "auth/password/reset", to: "password#reset", as: :password_reset
         end
+        get "profile/setting", to: "profile/setting#index", as: :profile_setting
 
         get "@:username", to: "profile/profile#profile", as: :user_profile
         # get "setting", to: "profile/posts#new"

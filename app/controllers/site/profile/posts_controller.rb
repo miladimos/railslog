@@ -2,32 +2,42 @@ class Site::Profile::PostsController < ApplicationController
   before_action :redirect_if_not_authenticated, only: [:new]
   before_action :set_post, only: [:edit, :update, :destroy]
 
+  def index
+    @posts = current_user.posts.all
+  end
+
   def new
     @post = Post.new
     @categories = Category.all
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.new(post_params)
     if @post.save
+      redirect_to index_path
     else
+      render :new
     end
   end
 
   def edit
+    @post = current_user.posts.find(params[:id])
   end
 
   def show
   end
 
   def update
-    if @post.update(post_params)
+    @post = current_user.posts.find(params[:id])
+
+    if @post.update(post_update_params)
       redirect_to @post, notice: "post updated"
     else
     end
   end
 
   def destroy
+    @post = current_user.posts.find(params[:id])
     @post.destroy
     redirect_to post_url, notice: "Post was deleted"
   end

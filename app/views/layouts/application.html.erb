@@ -100,7 +100,7 @@
             <% if user_logged_in? %>
               <div class="nav-item dropdown">
                 <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-                  <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                  <span class="avatar avatar-sm" style="background-image: url(https://i.pravatar.cc/150?img=50)"></span>
                   <div class="d-none d-xl-block ps-2">
                     <div>
                       <%= "Hello #{current_user.username}!" %>
@@ -112,13 +112,13 @@
                   <%= link_to "Profile", user_profile_path(current_user.username), class: "dropdown-item" %>
                   <%= link_to "New Post", posts_new_path , class: "dropdown-item" %>
                   <div class="dropdown-divider"></div>
-                  <a href="./settings.html" class="dropdown-item">Settings</a>
-                  <%= link_to 'Logout', login_path, method: :delete, class: "dropdown-item" %>
+                  <%= link_to "Setting", profile_setting_path, class: "dropdown-item" %>
+                  <%= link_to 'Logout', logout_path, class: "dropdown-item" %>
                 </div>
               </div>
             <% else %>
               <div class="nav-item">
-                <%= link_to 'Register/Login',register_form_path, class: 'btn btn-primary' %>
+                <%= link_to 'Register / Login', login_form_path, class: 'btn btn-primary' %>
               </div>
             <% end %>
           </div>

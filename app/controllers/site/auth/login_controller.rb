@@ -19,7 +19,7 @@ class Site::Auth::LoginController < ApplicationController
   end
 
   def logout
-    forget(current_user)
+    # forget(current_user)
     logout
     redirect_to root_path
   end
